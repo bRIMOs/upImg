@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <style>
+            .ui-fileupload-files .ui-fileupload-progress,.template-upload .size,.template-upload .name{
+                display: none;
+            }
+            .ui-panelgrid-cell .ui-fileupload {
+                width: 500px !important;
+            }
+            #addEntreprise .ui-panelgrid .ui-widget-content {
+                border: 0 !important;
+            }
+            #addEntreprise .ui-panelgrid td{
+                border: 0 !important;
+            }
+            .ui-fileupload {
+                border-bottom:  1px solid #a8a8a8 !important;
+                border-left:  1px solid #a8a8a8 !important;
+                border-right:  1px solid #a8a8a8 !important;
+                border-radius: 5px;
+            }               
+        </style>
+        <link type="text/css" rel="stylesheet" href="ressources/css/Bootstrap.css" />
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form id="addEntreprise" enctype="multipart/form-data">
+                <p:growl id="growl" autoUpdate="true" />
+                
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <p:panel id="basic" header="Basic" footer="Movie Details" style="margin-bottom:20px">
+                                
+                                <p:panelGrid columns="2" style="border: 0px !important">
+                                    <h:outputText   value="Images: *" />
+                                    <p:fileUpload id="image" style="width: 300px;" mode="advanced" label="Image entreprise" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true"
+                                              sizeLimit="20000" update=":addEntreprise:img" value="#{entrepriseBean.file}" auto="false" fileUploadListener="#{entrepriseBean.testUpload2}">
+                                    </p:fileUpload> 
+
+                                    <p:commandButton id="submit" value="Add User" 
+                                                     icon="ui-icon-disk" action="#{entrepriseBean.addEntreprise()}" update="growl img addEntreprise" />
+
+                                </p:panelGrid>
+                             </p:panel>
+                        </div>
+                        <div class="col-md-3">
+                             <p:panel id="basic2" header="Basic" footer="Image de profile" style="margin-bottom:20px">
+                                <h:graphicImage id="img"  width="#{entrepriseBean.witdh}" height="#{entrepriseBean.height}"  value="data:image/png;base64,#{entrepriseBean.imageB64}" />
+                             </p:panel>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+               
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+
