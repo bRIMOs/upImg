@@ -4,9 +4,6 @@
  */
 
 
-//import dz.sonelgaz.elit.sig.ejb.entities.Entreprise;
-//import dz.sonelgaz.elit.sig.ejb.entities.Users;
-//import dz.sonelgaz.elit.sig.ejb.sessionbean.entreprise.EntrepriseFacadeLocal;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
@@ -33,16 +30,12 @@ import org.apache.commons.io.FilenameUtils;
 /**
  *
  * @author bourbia.brahim
+ * sample code 
  */
 @ManagedBean(name = "entrepriseBean")
 @SessionScoped
 public class AddEntrepriseBean implements Serializable{
     
-    /**
-     * Creates a new instance of AddEntrepriseBean
-     */
-//    @EJB
-//    EntrepriseFacadeLocal entrepriseFacade;
     
     private String detailimg;
     private String name;
@@ -53,7 +46,11 @@ public class AddEntrepriseBean implements Serializable{
     private String imageB64;
     private String witdh;
     private String height;
-    
+
+    /**
+     * Creates a new instance of AddEntrepriseBean
+     */
+   
     public AddEntrepriseBean() {
         detailimg ="";
         imageB64 ="";
@@ -85,31 +82,12 @@ public class AddEntrepriseBean implements Serializable{
                 Logger.getLogger(AddEntrepriseBean.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            System.out.println("ffffffffffffffffffffffffffffffffffff"+imageB64);
-            //System.out.println("+++++++_ | "+servletContext.getRealPath("/images/entreprises/"+getName()));
-            System.out.println("location "+AddEntrepriseBean.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+            
         }
         else System.out.println("No fillllle ");
     }
-            
-    /*public void testUpload(){
-        if(file != null ) {
-            name = file.getFileName();
-            System.out.println("file == >"+file.getFileName());
-            
-            
-        }
-        else {
-            FacesMessage x = new FacesMessage("Pas d'image !","Veuillez charger une image");
-            x.setSeverity(FacesMessage.SEVERITY_ERROR);
-            FacesContext.getCurrentInstance().addMessage("growl", x);
-            System.out.println("No fillllle ");
-            name = "";
-        }
-        
-    }*/
+    
     public void refresh(){
-//        entreprise = new Entreprise();
         file = null;
         name = "";
         detailimg ="";
@@ -120,7 +98,6 @@ public class AddEntrepriseBean implements Serializable{
     }
     
     public void addEntreprise(){
-        System.out.println("   tessssssssssssssssssssssssssssst  ");
         if (entrepriseIdExist()) {
             System.out.println("Entreprise exist Dejà !");
         }else{
@@ -171,15 +148,7 @@ public class AddEntrepriseBean implements Serializable{
     }
     
     public boolean entrepriseIdExist(){
-//         Entreprise temp = entrepriseFacade.find(entreprise.getEntrepriseid());
-//         if(temp != null) {
-//                msg = new FacesMessage("Entreprise deja dans la liste", "Identifiant dejà existant !");
-//                msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-//                FacesContext.getCurrentInstance().addMessage("addEntreprise:entrepriseid", msg);
-//                entrepriseExist = true;
-//                return true;
-//         }
-//         entrepriseExist = false;
+		// code not implemented yet
          return false;
     }
 
@@ -232,14 +201,6 @@ public class AddEntrepriseBean implements Serializable{
         this.file = file;
     }
     
-//    public Entreprise getEntreprise() {
-//        return entreprise;
-//    }
-//
-//    public void setEntreprise(Entreprise entreprise) {
-//        this.entreprise = entreprise;
-//    }
-
     public boolean isEntrepriseExist() {
         return entrepriseExist;
     }
